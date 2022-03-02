@@ -15,30 +15,30 @@ func TestOpenseaAPI(t *testing.T) {
 		APIKey:     "c9128ae930224cabac7af252a18759a1",
 	})
 
-	resp, err := client.RetrieveCollections(context.Background(), OpenseaAPI.RetrieveCollectionStatsRequest{CollectionSlug: "doodles-official"})
+	resp, err := client.CollectionStats(context.Background(), OpenseaAPI.CollectionStatsRequest{CollectionSlug: "doodles-official"})
 	require.NoError(t, err)
 	require.NotNil(t, resp)
 
-	resp2, err := client.RetrieveEvents(context.Background(), OpenseaAPI.RetrieveEventsRequest{
+	resp2, err := client.Events(context.Background(), OpenseaAPI.EventsRequest{
 		OnlyOpenSea: true,
 		EventType:   "successful",
 	})
 	require.NoError(t, err)
 	require.NotNil(t, resp2)
 
-	_, err = client.RetrieveEvents(context.Background(), OpenseaAPI.RetrieveEventsRequest{
+	_, err = client.Events(context.Background(), OpenseaAPI.EventsRequest{
 		OnlyOpenSea: true,
 		TokenID:     123,
 	})
 	require.Error(t, err)
 
-	_, err = client.RetrieveEvents(context.Background(), OpenseaAPI.RetrieveEventsRequest{
+	_, err = client.Events(context.Background(), OpenseaAPI.EventsRequest{
 		OnlyOpenSea: true,
 		AuctionType: "random",
 	})
 	require.Error(t, err)
 
-	_, err = client.RetrieveEvents(context.Background(), OpenseaAPI.RetrieveEventsRequest{
+	_, err = client.Events(context.Background(), OpenseaAPI.EventsRequest{
 		OnlyOpenSea: true,
 		EventType:   "random",
 	})
