@@ -15,7 +15,7 @@ func TestOpenseaAPI(t *testing.T) {
 		APIKey:     "c9128ae930224cabac7af252a18759a1",
 	})
 
-	resp, err := client.Collections(context.Background(), OpenseaAPI.CollectionStatsRequest{CollectionSlug: "doodles-official"})
+	resp, err := client.CollectionStats(context.Background(), OpenseaAPI.CollectionStatsRequest{CollectionSlug: "doodles-official"})
 	require.NoError(t, err)
 	require.NotNil(t, resp)
 

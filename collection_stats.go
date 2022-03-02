@@ -17,7 +17,7 @@ type CollectionStatsResponse struct {
 	Stats Stats `json:"stats"`
 }
 
-func (client *Client) Collections(ctx context.Context, r CollectionStatsRequest) (CollectionStatsResponse, error) {
+func (client *Client) CollectionStats(ctx context.Context, r CollectionStatsRequest) (CollectionStatsResponse, error) {
 	req, err := http.NewRequest(http.MethodGet, client.config.DefaultURL+"collection/"+r.CollectionSlug+"/stats", nil)
 	if err != nil {
 		return CollectionStatsResponse{}, err
