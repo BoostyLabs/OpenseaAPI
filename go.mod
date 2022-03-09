@@ -1,4 +1,4 @@
-module OpenseaAPI
+module github.com/BoostyLabs/OpenseaAPI
 
 go 1.17
 
