@@ -4,9 +4,8 @@ import (
 	"context"
 	"testing"
 
+	"github.com/BoostyLabs/OpenseaAPI"
 	"github.com/stretchr/testify/require"
-
-	"OpenseaAPI"
 )
 
 func TestOpenseaAPI(t *testing.T) {
@@ -21,7 +20,6 @@ func TestOpenseaAPI(t *testing.T) {
 
 	resp2, err := client.Events(context.Background(), OpenseaAPI.EventsRequest{
 		OnlyOpenSea: true,
-		EventType:   "successful",
 	})
 	require.NoError(t, err)
 	require.NotNil(t, resp2)

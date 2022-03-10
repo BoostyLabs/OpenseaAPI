@@ -129,7 +129,7 @@ type AssetEvent struct {
 	Quantity                string       `json:"quantity,omitempty"`
 	Seller                  User         `json:"seller"`
 	StartingPrice           string       `json:"starting_price,omitempty"`
-	ToAccount               string       `json:"to_account,omitempty"`
+	ToAccount               FromAccount  `json:"to_account,omitempty"`
 	TotalPrice              string       `json:"total_price,omitempty"`
 	Transaction             Transaction  `json:"transaction,omitempty"`
 	WinnerAccount           FromAccount  `json:"winner_account,omitempty"`
