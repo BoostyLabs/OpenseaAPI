@@ -107,33 +107,63 @@ type PaymentToken struct {
 }
 
 type AssetEvent struct {
-	ApprovedAccount         string       `json:"approved_account,omitempty"`
-	Asset                   Asset        `json:"asset"`
-	AssetBundle             AssetBundle  `json:"asset_bundle,omitempty"`
-	AuctionType             string       `json:"auction_type,omitempty"`
-	BidAmount               string       `json:"bid_amount,omitempty"`
-	CollectionSlug          string       `json:"collection_slug,omitempty"`
-	ContractAddress         string       `json:"contract_address,omitempty"`
-	CreatedDate             string       `json:"created_date,omitempty"`
-	CustomEventName         string       `json:"custom_event_name,omitempty"`
-	DevFeePaymentEvent      string       `json:"dev_fee_payment_event,omitempty"`
-	DevSellerFeeBasisPoints int64        `json:"dev_seller_fee_basis_points"`
-	Duration                string       `json:"duration,omitempty"`
-	EndingPrice             string       `json:"ending_price,omitempty"`
-	EventType               string       `json:"event_type,omitempty"`
-	FromAccount             FromAccount  `json:"from_account"`
-	ID                      int64        `json:"id"`
-	IsPrivate               bool         `json:"is_private,omitempty"`
-	OwnerAccount            string       `json:"owner_account,omitempty"`
-	PaymentToken            PaymentToken `json:"payment_token"`
-	Quantity                string       `json:"quantity,omitempty"`
-	Seller                  User         `json:"seller"`
-	StartingPrice           string       `json:"starting_price,omitempty"`
-	ToAccount               FromAccount  `json:"to_account,omitempty"`
-	TotalPrice              string       `json:"total_price,omitempty"`
-	Transaction             Transaction  `json:"transaction,omitempty"`
-	WinnerAccount           FromAccount  `json:"winner_account,omitempty"`
-	ListingTime             string       `json:"listing_time,omitempty"`
+	ApprovedAccount         string             `json:"approved_account,omitempty"`
+	Asset                   Asset              `json:"asset"`
+	AssetBundle             AssetBundle        `json:"asset_bundle,omitempty"`
+	AuctionType             string             `json:"auction_type,omitempty"`
+	BidAmount               string             `json:"bid_amount,omitempty"`
+	CollectionSlug          string             `json:"collection_slug,omitempty"`
+	ContractAddress         string             `json:"contract_address,omitempty"`
+	CreatedDate             string             `json:"created_date,omitempty"`
+	CustomEventName         string             `json:"custom_event_name,omitempty"`
+	DevFeePaymentEvent      DevFeePaymentEvent `json:"dev_fee_payment_event,omitempty"`
+	DevSellerFeeBasisPoints int64              `json:"dev_seller_fee_basis_points"`
+	Duration                string             `json:"duration,omitempty"`
+	EndingPrice             string             `json:"ending_price,omitempty"`
+	EventType               string             `json:"event_type,omitempty"`
+	FromAccount             FromAccount        `json:"from_account"`
+	ID                      int64              `json:"id"`
+	IsPrivate               bool               `json:"is_private,omitempty"`
+	OwnerAccount            string             `json:"owner_account,omitempty"`
+	PaymentToken            PaymentToken       `json:"payment_token"`
+	Quantity                string             `json:"quantity,omitempty"`
+	Seller                  User               `json:"seller"`
+	StartingPrice           string             `json:"starting_price,omitempty"`
+	ToAccount               FromAccount        `json:"to_account,omitempty"`
+	TotalPrice              string             `json:"total_price,omitempty"`
+	Transaction             Transaction        `json:"transaction,omitempty"`
+	WinnerAccount           FromAccount        `json:"winner_account,omitempty"`
+	ListingTime             string             `json:"listing_time,omitempty"`
+}
+
+type DevFeePaymentEvent struct {
+	Asset          interface{} `json:"asset"`
+	AssetBundle    interface{} `json:"asset_bundle"`
+	EventType      string      `json:"event_type"`
+	EventTimestamp string      `json:"event_timestamp"`
+	AuctionType    interface{} `json:"auction_type"`
+	TotalPrice     interface{} `json:"total_price"`
+	PaymentToken   struct {
+		Symbol   string `json:"symbol"`
+		Address  string `json:"address"`
+		ImageUrl string `json:"image_url"`
+		Name     string `json:"name"`
+		Decimals int    `json:"decimals"`
+		EthPrice string `json:"eth_price"`
+		UsdPrice string `json:"usd_price"`
+	} `json:"payment_token"`
+	Transaction struct {
+		BlockHash        string      `json:"block_hash"`
+		BlockNumber      string      `json:"block_number"`
+		FromAccount      interface{} `json:"from_account"`
+		Id               int         `json:"id"`
+		Timestamp        interface{} `json:"timestamp"`
+		ToAccount        interface{} `json:"to_account"`
+		TransactionHash  string      `json:"transaction_hash"`
+		TransactionIndex string      `json:"transaction_index"`
+	} `json:"transaction"`
+	CreatedDate string      `json:"created_date"`
+	Quantity    interface{} `json:"quantity"`
 }
 
 type Transaction struct {

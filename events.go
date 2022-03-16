@@ -12,7 +12,7 @@ import (
 
 type EventsRequest struct {
 	OnlyOpenSea          bool   `json:"only_opensea"`
-	TokenID              int32  `json:"token_id"`
+	TokenID              int64  `json:"token_id"`
 	AssetContractAddress string `json:"asset_contract_address"`
 	CollectionSlug       string `json:"collection_slug"`
 	AccountAddress       string `json:"account_address"`
