@@ -27,7 +27,7 @@ type AssetContract struct {
 	AssetContractType           string `json:"asset_contract_type,omitempty"`
 	CreatedDate                 string `json:"created_date,omitempty"`
 	Name                        string `json:"name,omitempty"`
-	NFTVersion                  string `json:"nft_version",omitempty`
+	NFTVersion                  string `json:"nft_version,omitempty"`
 	OpenseaVersion              string `json:"opensea_version,omitempty"`
 	Owner                       int64  `json:"owner"`
 	SchemaName                  string `json:"schema_name,omitempty"`
