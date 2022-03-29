@@ -1,11 +1,11 @@
-package OpenseaAPI
+package opensea
 
 import "net/http"
 
 // Config is the global configuration for OpenSea client.
 type Config struct {
 	DefaultURL string `json:"openSeaDefaultURL" default:"https://api.opensea.io/api/v1/"`
-	APIKey     string `json:"api-key" default:"c9128ae930224cabac7af252a18759a1"`
+	APIKey     string `json:"api-key"`
 }
 
 // Client implementation of the OpenSea API.

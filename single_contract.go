@@ -1,4 +1,4 @@
-package OpenseaAPI
+package opensea
 
 import (
 	"context"

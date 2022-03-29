@@ -1,4 +1,4 @@
-package OpenseaAPI
+package opensea
 
 type Asset struct {
 	ID                   int64         `json:"id"`
