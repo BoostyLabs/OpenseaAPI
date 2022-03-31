@@ -1,9 +1,8 @@
-module github.com/BoostyLabs/OpenseaAPI
+module github.com/BoostyLabs/opensea
 
 go 1.17
 
 require (
-	github.com/stretchr/testify v1.7.0
 	github.com/zeebo/errs v1.2.2
 )
 

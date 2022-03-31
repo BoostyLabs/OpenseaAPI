@@ -1,4 +1,7 @@
-package OpenseaAPI
+// Copyright (C) 2022 Creditor Corp. Group.
+// See LICENSE for copying information.
+
+package opensea
 
 import (
 	"context"
