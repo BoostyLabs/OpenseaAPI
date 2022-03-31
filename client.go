@@ -2,6 +2,8 @@ package opensea
 
 import "net/http"
 
+var _ Opensea = (*Client)(nil)
+
 // Config is the global configuration for OpenSea client.
 type Config struct {
 	DefaultURL string `json:"openSeaDefaultURL" default:"https://api.opensea.io/api/v1/"`
