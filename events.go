@@ -60,9 +60,10 @@ func (client *Client) Events(ctx context.Context, r EventsRequest) (EventsRespon
 		if err != nil {
 			return EventsResponse{}, err
 		}
-		//if resp.StatusCode == http.StatusTooManyRequests {
-		//	return EventsResponse{}, ErrTooManyRequests.Wrap(errs.New(string(rr)))
-		//}
+
+		if resp.StatusCode == http.StatusTooManyRequests {
+			return EventsResponse{}, ErrTooManyRequests.Wrap(errs.New(string(rr)))
+		}
 
 		return EventsResponse{}, errs.New(string(rr))
 	}
