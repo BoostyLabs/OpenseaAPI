@@ -13,6 +13,9 @@ import (
 	"github.com/zeebo/errs"
 )
 
+// ErrTooManyRequests indicates OpenSea API error when request was throttled.
+var ErrTooManyRequests = errs.Class("Request was throttled")
+
 type EventsRequest struct {
 	OnlyOpenSea          bool   `json:"only_opensea"`
 	TokenID              int64  `json:"token_id"`
@@ -53,6 +56,9 @@ func (client *Client) Events(ctx context.Context, r EventsRequest) (EventsRespon
 	}()
 
 	if resp.StatusCode != http.StatusOK {
+		if resp.StatusCode == http.StatusTooManyRequests {
+			return EventsResponse{}, ErrTooManyRequests.Wrap(err)
+		}
 		rr, err := ioutil.ReadAll(resp.Body)
 		if err != nil {
 			return EventsResponse{}, err
