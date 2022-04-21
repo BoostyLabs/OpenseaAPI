@@ -56,12 +56,13 @@ func (client *Client) Events(ctx context.Context, r EventsRequest) (EventsRespon
 	}()
 
 	if resp.StatusCode != http.StatusOK {
-		if resp.StatusCode == http.StatusTooManyRequests {
-			return EventsResponse{}, ErrTooManyRequests.Wrap(err)
-		}
 		rr, err := ioutil.ReadAll(resp.Body)
 		if err != nil {
 			return EventsResponse{}, err
+		}
+
+		if resp.StatusCode == http.StatusTooManyRequests {
+			return EventsResponse{}, ErrTooManyRequests.Wrap(errs.New(string(rr)))
 		}
 
 		return EventsResponse{}, errs.New(string(rr))
